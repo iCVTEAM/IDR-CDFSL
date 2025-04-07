@@ -1,0 +1,24 @@
+experiment:
+  name: gnn
+  cuda: [0]
+  log_dir: results
+dataset:
+  name: mini-ImageNet
+  root_dir: data/mini-ImageNet/images
+  meta_dir: metadata/mini-ImageNet
+  num_workers: 4
+  way: 5
+  shot: 5
+  query_shot: 16
+  n_eposide: 100
+  transformer:
+    resize_size: 184
+    image_size: 160
+model:
+  name: Res10_Backbone
+  num_classes: 64
+  resolution: 25
+  n: 20
+  lam: 1
+  load: results/idr/best_model.pth
+  num_channel: 512

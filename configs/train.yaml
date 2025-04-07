@@ -1,0 +1,37 @@
+experiment:
+  name: idr
+  log_dir: results
+  cuda: [0] 
+  seed: 42 
+dataset:
+  name: miniImageNet               
+  root_dir: data/mini-ImageNet/images  
+  meta_dir: metadata/mini-ImageNet   
+  batch_size: 32   
+  num_workers: 4     
+  transformer:                                                     
+    image_size: 160          
+    resize_size: 184    
+model:                                                     
+  name: Res10_Backbone    
+  is_pretraining: True
+  num_classes: 64     
+  resolution: 25 
+  n: 20
+train:
+  epoch: 350
+  save_frequence: 50  
+  val_first: True  
+  optimizer:                                                     
+    name: SGD   
+    lr: 0.05 
+    momentum: 0.9
+    weight_decay: 0.00005  
+    nesterov: True 
+  scheduler:                                                     
+    name: MultiStepLR   
+    decay_epoch: [200, 300]
+    gamma: 0.1                                                     
+  criterion:                                                     
+    name: CrossEntropyLoss
+  

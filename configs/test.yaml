@@ -1,0 +1,28 @@
+experiment:
+  name: test_idr
+  cuda: [0]
+dataset:
+  name: eurosat
+  root_dir: data/eurosat
+  meta_dir: metadata/eurosat
+  num_workers: 4
+  way: 5
+  shot: 5
+  query_shot: 16
+  trail: 600
+  transformer:
+    resize_size: 184
+    image_size: 160
+model:
+  name: Res10_Backbone
+  finetuning: AlignFinetuning
+  is_pretraining: False
+  num_classes: 5
+  resolution: 25
+  n: 100
+  lam: 1
+  load: results/idr_eval.pth
+  num_channel: 512
+finetuning:
+  epoch: 0
+  steps: 50
